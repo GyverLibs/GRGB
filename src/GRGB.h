@@ -327,20 +327,20 @@ private:
         if (_fade) {                                    // фейд включен
             if (!fader) {                               // нужно установить новый цвет
                 // изменения по каналам в 8 бит
-                int16_t deltaR = _r - (_rf >> 7);
-                int16_t deltaG = _g - (_gf >> 7);
-                int16_t deltaB = _b - (_bf >> 7);
+                int16_t deltaR = abs(_r - (_rf >> 7));
+                int16_t deltaG = abs(_g - (_gf >> 7));
+                int16_t deltaB = abs(_b - (_bf >> 7));
                 
                 // макс изменение в 8 бит
                 _steps = 0;
-                _steps = max(abs(deltaR), _steps);
-                _steps = max(abs(deltaG), _steps);
-                _steps = max(abs(deltaB), _steps);
+                if (deltaR > _steps) _steps = deltaR;
+                if (deltaG > _steps) _steps = deltaG;
+                if (deltaB > _steps) _steps = deltaB;
                 
                 // если есть что менять
                 if (_steps > 0) {
-                    _fadeDt = _fadeTime / _steps;               // мс между шагами                
-                    _fadeDt = max(_fadeDt, 20);                 // не менее 20 мс
+                    _fadeDt = _fadeTime / _steps;               // мс между шагами      
+                    if (_fadeDt < 20) _fadeDt = 20;             // не менее 20 мс
                     _steps = _fadeTime / _fadeDt;               // общее кол-во шагов
                     _stepR = ((long)(_r << 7) - _rf) / _steps;  // шаг R
                     _stepG = ((long)(_g << 7) - _gf) / _steps;  // шаг G
