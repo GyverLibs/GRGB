@@ -26,6 +26,8 @@
 
     Версии:
     v1.0 - релиз
+    v1.1 - добавлен setKelvinFast
+    v1.2 - добавил псевдо 10 бит
 */
 
 #ifndef GRGB_h
@@ -33,6 +35,7 @@
 
 #define COMMON_CATHODE 0
 #define COMMON_ANODE 1
+#define GRGB_10BIT 2
 
 enum RGBCOLORS {
     GWhite =	0xFFFF,		// белый
@@ -57,8 +60,8 @@ enum RGBCOLORS {
 class GRGB {
 public:
     // пины в порядке RGB + опционально тип (по умолч. общий катод)
-    GRGB(const uint8_t dir = COMMON_CATHODE, const uint8_t pinR = 0, const uint8_t pinG = 0, const uint8_t pinB = 0) :
-    _pinR(pinR), _pinG(pinG), _pinB(pinB), _dir(dir) {
+    GRGB(const uint8_t dir = COMMON_CATHODE, const uint8_t pinR = 0, const uint8_t pinG = 0, const uint8_t pinB = 0, const uint8_t shift = 0) :
+    _dir(dir), _pinR(pinR), _pinG(pinG), _shift(shift)  {
         // если пины указаны (не равны)
         if (!(_pinR == _pinG && _pinR == _pinB)) {
             pinMode(pinR, OUTPUT);
@@ -338,7 +341,7 @@ public:
     
     // отключить коллбэк
     void detach() {
-        _handler = NULL;
+        _handler = nullptr;
     }
     
     // 8 бит сигналы для "виртуального" драйвера, обновляются после установки цвета
@@ -409,9 +412,9 @@ private:
         
         // если пины указаны, выводим
         if (!(_pinR == _pinG && _pinR == _pinB)) {
-            analogWrite(_pinR, r);
-            analogWrite(_pinG, g);
-            analogWrite(_pinB, b);
+            analogWrite(_pinR, r << _shift);
+            analogWrite(_pinG, g << _shift);
+            analogWrite(_pinB, b << _shift);
         }
     }
     void _fade8(uint8_t& x) { x = ((uint16_t)x * (_bri + 1)) >> 8; }
@@ -421,6 +424,7 @@ private:
     uint8_t _bri = 255;
     bool _crt = false, _fade = false;
     uint8_t _r, _g, _b;
+    const uint8_t _shift;
     
     uint16_t _rf = 0, _gf = 0, _bf = 0;
     uint32_t _tmr = 0, _fadeTime = 2000;

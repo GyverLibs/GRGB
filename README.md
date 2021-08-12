@@ -48,7 +48,10 @@
 ```cpp
 // указать тип драйвера COMMON_CATHODE/COMMON_ANODE
 // и пины в порядке R,G,B
-GRGB led(COMMON_CATHODE, 9, 10, 11);
+GRGB led(COMMON_CATHODE, pinR, pinG, pinB);
+
+// режим 10 бит ШИМ (для esp8266)
+GRGB led(COMMON_CATHODE, pinR, pinG, pinB, GRGB_10BIT);
 
 // виртуальный драйвер - пины не указываются
 GRGB led(COMMON_CATHODE);
@@ -156,6 +159,7 @@ void loop() {
 ## Версии
 - v1.0
 - v1.1 - добавлен setKelvinFast
+- v1.2 - добавил псевдо 10 бит
 
 <a id="feedback"></a>
 ## Баги и обратная связь
