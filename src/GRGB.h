@@ -317,9 +317,6 @@ public:
                 _bf = _b << 7;
             }
             show(true);     // показать цвета фейдера
-            /*Serial.print(_rf>>7) ;Serial.print(',');
-            Serial.print(_gf>>7); Serial.print(',');
-            Serial.println(_bf>>7);*/
         }
         return (_fade && _fadeFlag);
     }
@@ -432,6 +429,6 @@ private:
     int16_t _stepR = 0, _stepG = 0, _stepB = 0;
     int16_t _steps;
     bool _fadeFlag = false;
-    void (*_handler)() = NULL;
+    void (*_handler)() = nullptr;
 };
 #endif
