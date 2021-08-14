@@ -28,6 +28,7 @@
     v1.0 - релиз
     v1.1 - добавлен setKelvinFast
     v1.2 - добавил псевдо 10 бит
+    v1.2.1 - исправлен баг
 */
 
 #ifndef GRGB_h
@@ -61,7 +62,7 @@ class GRGB {
 public:
     // пины в порядке RGB + опционально тип (по умолч. общий катод)
     GRGB(const uint8_t dir = COMMON_CATHODE, const uint8_t pinR = 0, const uint8_t pinG = 0, const uint8_t pinB = 0, const uint8_t shift = 0) :
-    _dir(dir), _pinR(pinR), _pinG(pinG), _shift(shift)  {
+    _dir(dir), _pinR(pinR), _pinG(pinG), _pinB(pinB), _shift(shift)  {
         // если пины указаны (не равны)
         if (!(_pinR == _pinG && _pinR == _pinB)) {
             pinMode(pinR, OUTPUT);
