@@ -49,7 +49,7 @@
 ## Инициализация
 ```cpp
 // указать тип драйвера COMMON_CATHODE/COMMON_ANODE
-// и пины в порядке R,G,B
+// и ШИМ пины (на которых работает analogWrite) в порядке R,G,B
 GRGB led(COMMON_CATHODE, pinR, pinG, pinB);
 
 // режим 10 бит ШИМ (для esp8266)
