@@ -1,3 +1,5 @@
+This is an automatic translation, may be incorrect in some places. See sources and examples!
+
 # GRGB
 Library for controlling RGB LEDs and strips for Arduino. Lightweight version of the GyverRGB library
 - Support for common anode and common cathode drivers
