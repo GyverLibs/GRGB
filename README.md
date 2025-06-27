@@ -6,6 +6,9 @@
 
 [![Foo](https://img.shields.io/badge/ПОДПИСАТЬСЯ-НА%20ОБНОВЛЕНИЯ-brightgreen.svg?style=social&logo=telegram&color=blue)](https://t.me/GyverLibs)
 
+|⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️<br><br>**У меня появилась новая библиотека [RGBLED](https://github.com/GyverLibs/RGBLED), она легче, быстрее и имеет больше возможностей**<br><br>⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️|
+| --- |
+
 # GRGB
 Библиотека для управления RGB светодиодами и лентами для Arduino. Облегчённая версия библиотеки GyverRGB
 - Поддержка драйверов с общим анодом и общим катодом

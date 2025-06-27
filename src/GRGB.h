@@ -48,23 +48,23 @@
 #define GRGB_10BIT 2
 
 enum RGBCOLORS {
-    GWhite =	0xFFFF,		// белый
-    GSilver =	0xC618,		// серебро
-    GGray =		0x8410,		// серый
-    GBlack =	0x0,		// чёрный	
-    GRed =		0xF800,		// красный
-    GMaroon =	0x8000,		// бордовый
-    GOrange =	0xF980,		// оранжевый
-    GYellow =	0xFC00,		// жёлтый
-    GOlive =	0x8400,		// олива
-    GLime =		0x7E0,		// лайм
-    GGreen =	0x400,		// зелёный
-    GAqua =		0x7FF,		// аква
-    GTeal =		0x410,		// цвет головы утки чирка
-    GBlue =		0x1F,		// голубой
-    GNavy =		0x10,		// тёмно-синий
-    GMagenta =	0xF81F,		// розовый
-    GPurple =	0x8010,		// пурпурный
+    GWhite =    0xFFFF,        // белый
+    GSilver =    0xC618,        // серебро
+    GGray =        0x8410,        // серый
+    GBlack =    0x0,        // чёрный    
+    GRed =        0xF800,        // красный
+    GMaroon =    0x8000,        // бордовый
+    GOrange =    0xF980,        // оранжевый
+    GYellow =    0xFC00,        // жёлтый
+    GOlive =    0x8400,        // олива
+    GLime =        0x7E0,        // лайм
+    GGreen =    0x400,        // зелёный
+    GAqua =        0x7FF,        // аква
+    GTeal =        0x410,        // цвет головы утки чирка
+    GBlue =        0x1F,        // голубой
+    GNavy =        0x10,        // тёмно-синий
+    GMagenta =    0xF81F,        // розовый
+    GPurple =    0x8010,        // пурпурный
 };
 
 class GRGB {
@@ -148,7 +148,7 @@ public:
         case 2: r = p, g = V, b = t; break;
         case 3: r = p, g = q, b = V; break;
         case 4: r = t, g = p, b = V; break;
-        case 5: r = V, g = p, b = q; break;	
+        case 5: r = V, g = p, b = q; break;    
         }
         _r = r * 255.0;
         _g = g * 255.0;
@@ -158,7 +158,7 @@ public:
     
     // цветовое колесо 0-1530
     void setWheel(int color, int br = -1) {
-        if (color <= 255) {           			  // красный макс, зелёный растёт
+        if (color <= 255) {                         // красный макс, зелёный растёт
             _r = 255;
             _g = color;
             _b = 0;
